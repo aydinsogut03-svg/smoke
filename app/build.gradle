@@ -1,0 +1,41 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'com.aydinsogut.sigarasayaci'
+    compileSdk 35
+
+    defaultConfig {
+        applicationId 'com.aydinsogut.sigarasayaci'
+        minSdk 26
+        targetSdk 35
+        versionCode 1
+        versionName '1.0'
+    }
+
+    signingConfigs {
+        // Sabit imza: güncellemeler eski sürümün üzerine sorunsuz kurulur.
+        sabit {
+            storeFile rootProject.file('keystore/sigara-sayaci.jks')
+            storePassword 'sigarasayaci'
+            keyAlias 'sigarasayaci'
+            keyPassword 'sigarasayaci'
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            signingConfig signingConfigs.sabit
+        }
+        debug {
+            signingConfig signingConfigs.sabit
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+}

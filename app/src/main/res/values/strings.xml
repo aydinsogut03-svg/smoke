@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Sigara Sayacı</string>
+    <string name="today">Bugün</string>
+    <string name="smoked">Sigara İçtim</string>
+    <string name="undo">Geri Al</string>
+    <string name="settings">Ayarlar</string>
+    <string name="reset">Tüm Verileri Sil</string>
+    <string name="history">Son 30 Gün</string>
+    <string name="week_avg">Haftalık ort.</string>
+    <string name="month_total">Bu ay</string>
+    <string name="today_cost">Bugün harcanan</string>
+</resources>

@@ -1,0 +1,46 @@
+name: APK Derle
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - uses: android-actions/setup-android@v3
+
+      - uses: gradle/actions/setup-gradle@v4
+
+      - name: APK derle
+        run: |
+          chmod +x gradlew
+          ./gradlew --no-daemon assembleRelease
+          cp app/build/outputs/apk/release/app-release.apk SigaraSayaci.apk
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: SigaraSayaci-apk
+          path: SigaraSayaci.apk
+
+      - name: Sürüm yayınla
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v1.0.${{ github.run_number }}
+          name: Sigara Sayacı v1.0.${{ github.run_number }}
+          body: |
+            Telefonuna indirip kur: **SigaraSayaci.apk**
+            (Kurulumda "Bilinmeyen kaynaklara izin ver" demen gerekebilir.)
+          files: SigaraSayaci.apk
+          make_latest: true
