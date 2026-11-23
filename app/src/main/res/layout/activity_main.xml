@@ -9,7 +9,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="20dp">
+        android:paddingStart="16dp"
+        android:paddingTop="16dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="32dp">
 
         <!-- Üst bar -->
         <LinearLayout
@@ -17,6 +20,95 @@
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="🚬  Sigara Sayacı"
+                android:textColor="@color/text"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/settingsButton"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
+                android:gravity="center"
+                android:text="⚙"
+                android:textColor="@color/accent"
+                android:textSize="24sp" />
+        </LinearLayout>
+
+        <!-- Son sigaradan beri: canlı sayaç -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:gravity="center"
+            android:text="Son sigaradan beri geçen süre"
+            android:textColor="@color/text"
+            android:textSize="16sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <LinearLayout style="@style/TimerCell">
+                <TextView android:id="@+id/tDays" style="@style/TimerNum" />
+                <TextView style="@style/TimerLabel" android:text="Gün" />
+            </LinearLayout>
+            <LinearLayout style="@style/TimerCell">
+                <TextView android:id="@+id/tHours" style="@style/TimerNum" />
+                <TextView style="@style/TimerLabel" android:text="Saat" />
+            </LinearLayout>
+            <LinearLayout style="@style/TimerCell">
+                <TextView android:id="@+id/tMins" style="@style/TimerNum" />
+                <TextView style="@style/TimerLabel" android:text="Dakika" />
+            </LinearLayout>
+            <LinearLayout style="@style/TimerCell">
+                <TextView android:id="@+id/tSecs" style="@style/TimerNum"
+                    android:textColor="@color/accent" />
+                <TextView style="@style/TimerLabel" android:text="Saniye" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/lastText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/pill_bg"
+            android:paddingStart="14dp"
+            android:paddingTop="5dp"
+            android:paddingEnd="14dp"
+            android:paddingBottom="5dp"
+            android:textColor="@color/muted"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/healthText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:textColor="@color/good"
+            android:textSize="13sp" />
+
+        <!-- Bugün -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/card_bg"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="16dp">
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -27,233 +119,218 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/app_name"
-                    android:textColor="@color/text"
-                    android:textSize="22sp"
+                    android:text="Bugün içilen"
+                    android:textColor="@color/muted"
+                    android:textSize="14sp" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="bottom"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/countText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:includeFontPadding="false"
+                        android:text="0"
+                        android:textColor="@color/text"
+                        android:textSize="56sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/limitText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginBottom="8dp"
+                        android:textColor="@color/muted"
+                        android:textSize="20sp" />
+                </LinearLayout>
+
+                <ProgressBar
+                    android:id="@+id/limitProgress"
+                    style="@android:style/Widget.ProgressBar.Horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="8dp"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginEnd="12dp"
+                    android:max="100"
+                    android:progressDrawable="@drawable/progress_bar" />
+
+                <TextView
+                    android:id="@+id/statusText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:textColor="@color/muted"
+                    android:textSize="13sp"
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/dateText"
+                    android:id="@+id/todayCostText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
                     android:textColor="@color/muted"
-                    android:textSize="14sp" />
+                    android:textSize="13sp" />
             </LinearLayout>
-
-            <TextView
-                android:id="@+id/settingsButton"
-                android:layout_width="wrap_content"
-                android:layout_height="44dp"
-                android:background="?android:attr/selectableItemBackgroundBorderless"
-                android:gravity="center"
-                android:paddingStart="12dp"
-                android:paddingEnd="12dp"
-                android:text="⚙  Ayarlar"
-                android:textColor="@color/accent"
-                android:textSize="15sp"
-                android:textStyle="bold" />
-        </LinearLayout>
-
-        <!-- Sayaç kartı -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/card_bg"
-            android:gravity="center_horizontal"
-            android:orientation="vertical"
-            android:padding="20dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/today"
-                android:textColor="@color/muted"
-                android:textSize="16sp" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="bottom"
-                android:orientation="horizontal">
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/countText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFeatureSettings="tnum"
-                    android:includeFontPadding="false"
-                    android:text="0"
-                    android:textColor="@color/text"
-                    android:textSize="88sp"
+                <Button
+                    android:id="@+id/addButton"
+                    android:layout_width="112dp"
+                    android:layout_height="112dp"
+                    android:background="@drawable/big_button"
+                    android:elevation="4dp"
+                    android:stateListAnimator="@null"
+                    android:text="+1\nİçtim"
+                    android:textAllCaps="false"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp"
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/limitText"
+                    android:id="@+id/undoButton"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="14dp"
-                    android:layout_marginStart="6dp"
+                    android:layout_height="36dp"
+                    android:layout_marginTop="4dp"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:gravity="center"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:text="↶ Geri Al"
                     android:textColor="@color/muted"
-                    android:textSize="24sp" />
+                    android:textSize="13sp" />
             </LinearLayout>
-
-            <ProgressBar
-                android:id="@+id/limitProgress"
-                style="@android:style/Widget.ProgressBar.Horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="12dp"
-                android:layout_marginTop="8dp"
-                android:max="100"
-                android:progressDrawable="@drawable/progress_bar" />
-
-            <TextView
-                android:id="@+id/statusText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:gravity="center"
-                android:textColor="@color/muted"
-                android:textSize="15sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/sinceText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:gravity="center"
-                android:textColor="@color/muted"
-                android:textSize="14sp" />
         </LinearLayout>
 
-        <!-- Büyük buton -->
-        <Button
-            android:id="@+id/addButton"
-            android:layout_width="180dp"
-            android:layout_height="180dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="24dp"
-            android:background="@drawable/big_button"
-            android:elevation="6dp"
-            android:stateListAnimator="@null"
-            android:text="+1\nSigara İçtim"
-            android:textAllCaps="false"
-            android:textColor="#FFFFFF"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/undoButton"
-            android:layout_width="wrap_content"
-            android:layout_height="44dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="8dp"
-            android:background="?android:attr/selectableItemBackground"
-            android:gravity="center"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp"
-            android:text="↶  Geri Al"
-            android:textColor="@color/muted"
-            android:textSize="15sp" />
-
-        <!-- İstatistikler -->
+        <!-- İçilmeyen sigara / geri kazanılan ömür -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <LinearLayout style="@style/SmallCard" android:layout_marginEnd="5dp">
+                <TextView android:id="@+id/avoidedText" style="@style/CardBig" />
+                <TextView style="@style/CardSub" android:text="🚭 İçilmeyen sigara" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/SmallCard" android:layout_marginStart="5dp">
+                <TextView android:id="@+id/lifeGainText" style="@style/CardBig" />
+                <TextView style="@style/CardSub" android:text="❤ Geri kazanılan ömür" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Toplam tasarruf -->
+        <LinearLayout
+            android:id="@+id/moneyCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/card_bg"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/savedText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/text"
+                android:textSize="36sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Şimdiye kadarki toplam tasarruf"
+                android:textColor="@color/muted"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/priceText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/pill_bg"
+                android:paddingStart="12dp"
+                android:paddingTop="4dp"
+                android:paddingEnd="12dp"
+                android:paddingBottom="4dp"
+                android:textColor="@color/accent"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!-- Sıradaki hedefler (halkalar) -->
+        <LinearLayout
+            android:id="@+id/ringRow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal" />
+
+        <!-- Ne kazandık, ne kaybettik -->
+        <TextView style="@style/SectionTitle" android:text="Ne kazandık, ne kaybettik?" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="6dp"
-                android:layout_weight="1"
-                android:background="@drawable/card_bg"
-                android:orientation="vertical"
-                android:padding="12dp">
-                <TextView
-                    android:id="@+id/weekAvgText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/text"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/week_avg"
-                    android:textColor="@color/muted"
-                    android:textSize="12sp" />
-            </LinearLayout>
+                android:id="@+id/gainList"
+                style="@style/SmallCard"
+                android:layout_marginEnd="5dp" />
 
             <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="6dp"
-                android:layout_marginStart="6dp"
-                android:layout_weight="1"
-                android:background="@drawable/card_bg"
-                android:orientation="vertical"
-                android:padding="12dp">
-                <TextView
-                    android:id="@+id/monthText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/text"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/month_total"
-                    android:textColor="@color/muted"
-                    android:textSize="12sp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="6dp"
-                android:layout_weight="1"
-                android:background="@drawable/card_bg"
-                android:orientation="vertical"
-                android:padding="12dp">
-                <TextView
-                    android:id="@+id/costText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/text"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-                <TextView
-                    android:id="@+id/costLabel"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/today_cost"
-                    android:textColor="@color/muted"
-                    android:textSize="12sp" />
-            </LinearLayout>
+                android:id="@+id/lossList"
+                style="@style/SmallCard"
+                android:layout_marginStart="5dp" />
         </LinearLayout>
 
-        <!-- Geçmiş -->
+        <!-- Son 7 gün -->
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginTop="24dp"
-            android:text="@string/history"
-            android:textColor="@color/text"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+            android:id="@+id/weekTitle"
+            style="@style/SectionTitle"
+            android:text="Son 7 gün" />
 
         <LinearLayout
-            android:id="@+id/historyList"
+            android:id="@+id/weekChart"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:background="@drawable/card_bg"
+            android:orientation="horizontal"
+            android:padding="12dp" />
+
+        <!-- Başarılar -->
+        <TextView
+            android:id="@+id/achTitle"
+            style="@style/SectionTitle"
+            android:text="Başarılar" />
+
+        <LinearLayout
+            android:id="@+id/achGrid"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/card_bg"
-            android:orientation="vertical"
-            android:paddingBottom="6dp"
-            android:paddingTop="6dp" />
+            android:orientation="vertical" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:gravity="center"
+            android:text="Sağlık ve ömür bilgileri genel tahminlerdir, tıbbi tavsiye değildir."
+            android:textColor="@color/muted"
+            android:textSize="11sp" />
     </LinearLayout>
 </ScrollView>
