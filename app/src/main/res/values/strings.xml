@@ -10,4 +10,5 @@
     <string name="week_avg">Haftalık ort.</string>
     <string name="month_total">Bu ay</string>
     <string name="today_cost">Bugün harcanan</string>
+    <string name="widget_desc">Ana ekrandan tek dokunuşla sigara kaydet</string>
 </resources>

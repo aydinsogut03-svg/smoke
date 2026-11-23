@@ -12,6 +12,7 @@ Günde kaç sigara içtiğini saymak için basit bir Android uygulaması.
 - **Ne kazandık, ne kaybettik?**: tasarruf, geri kazanılan ömür, en uzun ara / harcanan para, kaybedilen ömür, sigaraya giden zaman
 - **Başarılar**: süre, para, içilmeyen sigara ve limit hedefleri; sıradaki hedefler halka grafikle
 - Kısa **son 7 gün** grafiği
+- **Ana ekran widget'ı**: uygulamayı açmadan "+1 İçtim", bugünkü sayı ve son sigaradan beri süre
 - Türkçe arayüz, açık/koyu tema; veriler sadece telefonunda saklanır
 
 ## İndir

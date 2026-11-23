@@ -440,6 +440,7 @@ public class MainActivity extends Activity {
         renderGainLoss(total, avoided, saved, ppc);
         renderWeek(limit);
         renderAchievements(avoided, saved);
+        SmokeWidget.updateAll(this);
     }
 
     private void renderGainLoss(int total, double avoided, double saved, float ppc) {
